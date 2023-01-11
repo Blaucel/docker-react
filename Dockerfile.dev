@@ -1,0 +1,27 @@
+# Dockerfile para versión de desarrollo, por eso el .dev
+# Lo ejecutamos con el comando -> docker build -f Dockerfile.dev .
+# Esta versión de node nos evitará algunos bugs
+FROM node:16-alpine
+
+USER node
+
+# Al trabajar en WSL debemos especificar bien la ruta en el emulador para evitar problemas
+RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
+
+#
+COPY --chown=node:node ./package.json ./
+RUN npm install
+COPY --chown=node:node ./ ./
+
+CMD [ "npm", "run", "start"]
+
+#NOTA: Hemos eliminado la carpeta node_modules ya que al crearse la imagen con node todos esos archivos ya se encuentran disponibles
+# Arrancamos con -> docker run -p 3000:3000 numeroId-Tag
+# podemos acceder en http://localhost:3000/
+
+# Ya que al iniciarse no comprueba que haya cambios en los archivos,
+# si no archivos diferentes, podemos forzar la actualización de determinados archivos
+
+#docker run -it -p 3000:3000 -v /home/node/app/node_modules -v ~/frontend:/home/node/app numeroId-Tag
+# Esto lo facilitaremos con Docker Compode
