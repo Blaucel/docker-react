@@ -1,0 +1,17 @@
+# Config de Travis CI
+# Cuando actualicemos Github Travis se enterará 
+# y montará la nueva versión en AWS
+sudo: required
+services:
+  - docker
+
+language: generic
+
+# Ya que en travis no podemos isar el ID del docker, ponemos un tag para manejarlo
+# El tag es indiferente, pero usaré esté por seguir el ejemplo y por que me parece una buena práctica
+before_install:
+  - docker build -t blaucel/docker-react -f Dockerfile.dev .
+
+# Travis usará este test para saber que el código no está roto y que lo puede montar
+script:
+  - docker run -e CI=true blaucel/docker-react npm run test
