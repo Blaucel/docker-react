@@ -1,6 +1,5 @@
-# Config de Travis CI
-# Cuando actualicemos Github Travis se enterará 
-# y montará la nueva versión en AWS
+# Config de Travis CI (Ojito, Travis tiene datos de pago)
+# Cuando actualicemos Github Travis se enterará y montará la nueva versión en AWS
 sudo: required
 services:
   - docker
