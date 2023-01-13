@@ -14,3 +14,16 @@ before_install:
 # Travis usará este test para saber que el código no está roto y que lo puede montar
 script:
   - docker run -e CI=true blaucel/docker-react npm run test
+
+# Subir a AWS Elastic Beanstack
+  deploy:
+    provider: elasticbeanstalk
+    region: "eu-west-3"
+    app: "docker-react"
+    env: "Dockerreact-env"
+    bucket_name: "elasticbeanstalk-eu-west-3-651706220970"
+    bucket_path: "docker-react"
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: "$AWS_SECRET_KEY"  
