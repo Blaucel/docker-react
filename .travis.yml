@@ -4,8 +4,6 @@ sudo: required
 services:
   - docker
 
-language: generic
-
 # Ya que en travis no podemos isar el ID del docker, ponemos un tag para manejarlo
 # El tag es indiferente, pero usaré esté por seguir el ejemplo y por que me parece una buena práctica
 before_install:
@@ -26,4 +24,4 @@ script:
     on:
       branch: master
     access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: "$AWS_SECRET_KEY"  
+    secret_access_key: "$AWS_SECRET_KEY"
