@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Tengo fe en que esto aparezca ya en AWS :_D
+          Tengo fe en que esto aparezca ya en AWS :__D
         </p>
         <a
           className="App-link"
