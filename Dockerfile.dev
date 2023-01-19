@@ -14,7 +14,7 @@ COPY --chown=node:node ./package.json ./
 RUN npm install
 COPY --chown=node:node ./ ./
 
-CMD [ "npm", "run", "start"]
+CMD [ "npm", "start"]
 
 #NOTA: Hemos eliminado la carpeta node_modules ya que al crearse la imagen con node todos esos archivos ya se encuentran disponibles
 # Arrancamos con -> docker run -p 3000:3000 numeroId-Tag
