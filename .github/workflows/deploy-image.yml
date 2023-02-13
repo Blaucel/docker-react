@@ -13,8 +13,12 @@ name: Create and publish a Docker image
 on: push
 
 env:
+# Indicamos que cree en Docker Packages
   REGISTRY: ghcr.io
+# Una imagen con el mismo nombre que el repositorio (se puede indicar a mano)
   IMAGE_NAME: ${{ github.repository }}
+# Le ponemos un tag personalizado a la imagen: 1.0.número de subida
+  IMAGE_TAG: 1.0.${{ github.run_number }}
 
 jobs:
   build-and-push-image:
@@ -41,13 +45,15 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 # Personalizamos los tags de la imagen subida:
-# La última será la master y cada una recordará su sha para diferenciarlas
           tags: |
+# Reasigna la etiqueta master a esta última subida
             type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
+# Crea una etiqueta con el sha
             type=sha
+# Crea una etiqueta con la fecha de subida
+            type=schedule,pattern={{date 'DDMMYYY'}}
+# Crea una etiqueta con la versión
+            type=semver,pattern={{raw}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
