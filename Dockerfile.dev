@@ -24,4 +24,4 @@ CMD [ "npm", "start"]
 # si no archivos diferentes, podemos forzar la actualización de determinados archivos
 
 #docker run -it -p 3000:3000 -v /home/node/app/node_modules -v ~/frontend:/home/node/app numeroId-Tag
-# Esto lo facilitaremos con Docker Compode
+# Esto lo facilitaremos con Docker Compose
