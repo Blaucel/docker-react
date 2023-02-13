@@ -21,7 +21,7 @@ env:
   IMAGE_TAG: 1.0.${{ github.run_number }}
 
 jobs:
-  build-and-push-image:
+  build-and-push-docker:
     runs-on: ubuntu-latest
     permissions:
       contents: read
