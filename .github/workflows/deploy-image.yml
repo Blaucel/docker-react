@@ -49,7 +49,7 @@ jobs:
             type=ref,event=branch
             type=schedule,pattern={{date 'DDMMYYY'}}
             type=semver,pattern={{raw}}
-            type=sha
+            type=sha,format=long
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
