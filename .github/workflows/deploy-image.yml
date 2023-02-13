@@ -16,7 +16,7 @@ env:
 # Indicamos que cree en Docker Packages
   REGISTRY: ghcr.io
 # Una imagen con el mismo nombre que el repositorio-> ${{ github.repository }}
-  IMAGE_NAME: Dockymagen
+  IMAGE_NAME: dockymagen
 # Le ponemos un tag personalizado a la imagen: 1.0.número de subida
   IMAGE_TAG: 1.0.${{ github.run_number }}
 
