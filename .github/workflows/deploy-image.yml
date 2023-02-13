@@ -46,13 +46,9 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 # Personalizamos los tags de la imagen subida:
           tags: |
-# Reasigna la etiqueta master a esta última subida
             type=ref,event=branch
-# Crea una etiqueta con el sha
             type=sha
-# Crea una etiqueta con la fecha de subida
             type=schedule,pattern={{date 'DDMMYYY'}}
-# Crea una etiqueta con la versión
             type=semver,pattern={{raw}}
 
       - name: Build and push Docker image
