@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Ahora hacemos pruebas para el curro v4
+          Ahora hacemos pruebas para el curro v4.1
         </p>
         <a
           className="App-link"
