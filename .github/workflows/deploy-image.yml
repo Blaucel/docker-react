@@ -46,9 +46,12 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 # Personalizamos los tags de la imagen subida:
           tags: |
+            type=schedule
             type=ref,event=branch
-            type=schedule,pattern={{date 'DDMMYYY'}}
-            type=semver,pattern={{raw}}
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
             type=sha
 
       - name: Build and push Docker image
@@ -57,7 +60,9 @@ jobs:
           context: .
           push: true
           tags: |
-            type=schedule,pattern={{date 'YYYYMMDD'}}
-            type=semver,pattern={{version}}
+            user/app:latest
+            user/app:1.0.0
+            ghcr.io/user/app:latest
+            ghcr.io/user/app:1.0.0
           labels: ${{ steps.meta.outputs.labels }}
 # tags: ${{ steps.meta.outputs.tags }}
