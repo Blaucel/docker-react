@@ -13,8 +13,8 @@ name: Create and publish a Docker image
 on: push
 
 env:
-# Indicamos que cree en Docker Packages
-  REGISTRY: ghcr.io
+# Indicamos que cree en GitHub Packages
+#  REGISTRY: ghcr.io
 # Una imagen con el mismo nombre que el repositorio-> ${{ github.repository }}
   IMAGE_NAME: blaucel/dockymagen
 # Le ponemos un tag personalizado a la imagen: 1.0.número de subida
@@ -46,14 +46,8 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 # Personalizamos los tags de la imagen subida:
           tags: |
-            type=schedule
             type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
             type=sha
-
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
