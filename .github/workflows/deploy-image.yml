@@ -57,7 +57,7 @@ jobs:
           context: .
           push: true
           tags: |
-            type=schedule,pattern={{date 'DDMMYYY'}}
-            type=semver,pattern={{raw}}
+            type=schedule,pattern={{date 'YYYYMMDD'}}
+            type=semver,pattern={{version}}
           labels: ${{ steps.meta.outputs.labels }}
 # tags: ${{ steps.meta.outputs.tags }}
