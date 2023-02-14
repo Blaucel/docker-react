@@ -14,7 +14,7 @@ on: push
 
 env:
 # Indicamos que cree en GitHub Packages
-#  REGISTRY: ghcr.io
+  REGISTRY: ghcr.io
 # Una imagen con el mismo nombre que el repositorio-> ${{ github.repository }}
   IMAGE_NAME: blaucel/dockymagen
 # Le ponemos un tag personalizado a la imagen: 1.0.número de subida

@@ -7,6 +7,8 @@
 #Usamos Nginx, un load balancer que permite equilibrar la carga de trabajo en los servidores manteniendo la capacidad a un nv optimo
 
 FROM node:16-alpine as builder
+LABEL version="0.28"
+LABEL maintaner="Emilio"
 WORKDIR '/app'
 COPY package.json .
 RUN npm install
