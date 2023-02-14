@@ -46,7 +46,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 # Personalizamos los tags de la imagen subida:
           tags: |
-            type=ref,event=branch
+#            type=ref,event=branch
             type=schedule,pattern={{date 'DDMMYYY'}}
             type=semver,pattern={{raw}}
 #            type=sha
